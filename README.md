@@ -24,12 +24,14 @@ This repository demonstrates a clean implementation of the **Iterator** design p
 ## Usage Example
 
 ```cpp
-UserCollection users;
-users.addUser(new User("Alice"));
-users.addUser(new User("Bob"));
+UserCollection collection;
+collection.add(new User("Dmytro"));
+collection.add(new User("Olena"));
 
-UserIterator* iterator = users.createIterator();
-while (iterator->hasNext()) {
-    IUser* user = iterator->next();
-    user->print(); // Output: Alice, then Bob
+IUserIterator* it = collection.createIterator();
+while (it->hasNext()) {
+    std::cout << "[User] " << it->next()->getName() << "\n";
 }
+// Output:
+// [User] Dmytro
+// [User] Olena
